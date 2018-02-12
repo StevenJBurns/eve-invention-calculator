@@ -1,0 +1,11 @@
+﻿@functions {
+  public static String GetBlueprintDetails(int id)
+    {
+    var db = Database.Open("InventionDB"); 
+    var sqlSelectBlueprintSingle = "SELECT * FROM tblBlueprints WHERE blueprintID = @0";
+    
+    var rowBlueprint = db.QuerySingle(sqlSelectBlueprintSingle, id);
+      
+    return String.Empty;
+    }
+  }

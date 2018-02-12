@@ -1,0 +1,47 @@
+﻿@{
+var db = Database.Open("InventionDB"); 
+var sqlSelectBlueprintsAll = "SELECT * FROM tblBlueprints";
+}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>EVE Invention Calculator</title>
+    <link type="text/css" rel="stylesheet" href="css/invention.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  </head>
+  <body>
+    <header onmousedown='return false;' onselect='return false;'>
+      <h1>EVE Invention Calculator</h1>
+      <h4>A dynamic tool to calculate success rates</h4>
+    </header>
+    <div id="divInputs">
+      <div id="divBlueprints" class="divInput">
+        <p>Blueprints</p>
+        <ul>
+          @foreach(var bp in db.Query(sqlSelectBlueprintsAll))
+            {<li>@bp.blueprintName</li>}
+        </ul>
+      </div>
+      <div id="divSkills" class="divInput">
+        <p>Skills</p>
+        <ul>
+          <li>Amarr Encryption Methods</li>
+          <li>Caldari Encryption Methods</li>
+          <li>Gallente Encryption Methods</li>
+          <li>Minmitar Encryption Methods</li>
+        </ul>
+      </div>
+      <div id="divMetaItem" class="divInput">
+        <p>Meta-Item</p>
+      </div>
+      <div id="divDecryptor" class="divInput">
+        <p>Decryptor</p>
+      </div>
+    </div>
+    <footer onmousedown="return false;" onselect="return false;">
+      <h4><a href=@Href("~/")>&copy; 2012 SJB</a></h4>
+    </footer>
+    <script type="text/javascript" src="./javascript/invention.js"></script>
+  </body>
+</html>
